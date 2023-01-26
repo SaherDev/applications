@@ -1,7 +1,11 @@
-{  
+{
     "name": "@application/my-app",
     "version": "0.0.0",
     "description": "my-app",
     "main": "index.js",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "@application/common": "^0.0.0",
+        "@application/utils": "^0.0.0"
+    }
 }
