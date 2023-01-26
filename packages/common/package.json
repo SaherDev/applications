@@ -1,0 +1,7 @@
+{  
+    "name": "@application/common",
+    "version": "0.0.0",
+    "description": "common",
+    "main": "index.js",
+    "license": "MIT"
+}
