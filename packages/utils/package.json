@@ -1,7 +1,0 @@
-{  
-    "name": "@application/utils",
-    "version": "0.0.0",
-    "description": "utils",
-    "main": "index.js",
-    "license": "MIT"
-}
