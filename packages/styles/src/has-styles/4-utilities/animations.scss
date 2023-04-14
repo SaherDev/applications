@@ -1,0 +1,27 @@
+.animation-skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.animation-skeleton-text {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.animation-loading-spinner {
+  animation: rotate 2.5s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--skeleton-0);
+  }
+
+  100% {
+    background-color: var(--skeleton-100);
+  }
+}

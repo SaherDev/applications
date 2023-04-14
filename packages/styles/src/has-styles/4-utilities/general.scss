@@ -1,0 +1,59 @@
+.utility-hide {
+  display: none !important;
+}
+.utility-hide-mobile {
+  @media #{$break1} {
+    display: none !important;
+  }
+}
+.utility-hide-desktop {
+  @media #{$break3} {
+    display: none !important;
+  }
+}
+
+.utility-display-block {
+  display: block;
+}
+
+.utility-display-none {
+  display: none;
+}
+
+.utility-rotate {
+  transform: rotate(180deg);
+
+  html[dir="rtl"] & {
+    transform: rotate(360deg);
+  }
+}
+
+.utility-rotate-90 {
+  transform: rotate(90deg);
+  html[dir="rtl"] & {
+    transform: rotate(90deg);
+  }
+}
+
+.utility-rotate-right-rtl {
+  html[dir="rtl"] & {
+    transform: rotateY(3.142rad);
+  }
+}
+
+.utility-rotate-vertical {
+  transform: rotate(180deg);
+}
+
+.utility-text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.utility-center-elements {
+  display: grid;
+  place-items: center;
+  block-size: 100%;
+  inline-size: 100%;
+}

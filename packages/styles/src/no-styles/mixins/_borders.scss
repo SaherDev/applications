@@ -1,0 +1,91 @@
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-top-right-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin inline-radius($side, $radius) {
+  @if $side == "left" {
+    html[dir="ltr"] & {
+      @include border-left-radius($radius);
+    }
+    html[dir="rtl"] & {
+      @include border-right-radius($radius);
+    }
+  } @else {
+    html[dir="ltr"] & {
+      @include border-right-radius($radius);
+    }
+    html[dir="rtl"] & {
+      @include border-left-radius($radius);
+    }
+  }
+}
+
+@mixin inline-corner-radius($side, $radius) {
+  @if $side == "top-left" {
+    html[dir="ltr"] & {
+      border-top-left-radius: $radius;
+    }
+    html[dir="rtl"] & {
+      border-top-right-radius: $radius;
+    }
+  }
+
+  @if $side == "top-right" {
+    html[dir="ltr"] & {
+      border-top-right-radius: $radius;
+    }
+    html[dir="rtl"] & {
+      border-top-left-radius: $radius;
+    }
+  }
+
+  @if $side == "bottom-left" {
+    html[dir="ltr"] & {
+      border-bottom-left-radius: $radius;
+    }
+    html[dir="rtl"] & {
+      border-bottom-right-radius: $radius;
+    }
+  }
+
+  @if $side == "bottom-right" {
+    html[dir="ltr"] & {
+      border-bottom-right-radius: $radius;
+    }
+    html[dir="rtl"] & {
+      border-bottom-left-radius: $radius;
+    }
+  }
+}
+
+@mixin inline-shadow($xOffset, $yOffset, $blur, $spread-radius, $color) {
+  html[dir="ltr"] & {
+    box-shadow: ($xOffset * -1) $yOffset $blur $spread-radius $color;
+  }
+  html[dir="rtl"] & {
+    box-shadow: $xOffset $yOffset $blur $spread-radius $color;
+  }
+}

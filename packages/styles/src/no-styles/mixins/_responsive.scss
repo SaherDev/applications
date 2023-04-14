@@ -1,0 +1,19 @@
+@mixin mobile {
+  @media #{$break1} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$break2} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$break3} {
+    @content;
+  }
+}
+
+
