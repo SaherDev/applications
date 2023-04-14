@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build --parallel"
+    "build": "lerna run build --parallel",
+    "version": "lerna version"
   },
   "devDependencies": {
     "@yarnpkg/pnpify": "^4.0.0-rc.42",
