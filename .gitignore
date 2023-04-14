@@ -9,6 +9,5 @@
 !.yarn/cache
 #.pnp.*
 dist
-yarn.lock
 node_modules
 *.log
