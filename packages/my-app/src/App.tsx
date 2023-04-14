@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import './App.scss'
 import { Button } from '@monorepo/common/dist'
 import { formatDate } from '@monorepo/utilities/dist'
-import {kkfkjfk} from  "@/services"
+import '@monorepo/styles/dist';
+import {serviceA} from  "@/services"
+
 function App() {
   const [count, setCount] = useState(0)
   
  console.log( formatDate(new Date))
 
   return (
-    <div className={'button'}>
+    <div className={''}>
       <Button onClick={()=>{}} disabled={true} >
 
       <h1>Vite + React</h1>

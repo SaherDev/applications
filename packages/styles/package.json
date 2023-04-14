@@ -4,7 +4,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build:styles": "sass src/index.scss dist/index.scss  && sass src/index.css dist/index.css",
+        "build:styles": "sass src/index.scss dist/index.scss ",
         "build:ts": "tsc",
         "build": "yarn build:styles && yarn build:ts"
     },

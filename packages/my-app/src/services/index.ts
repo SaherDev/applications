@@ -1,1 +1,1 @@
-export const kkfkjfk ="d";
+export const serviceA ="d";
