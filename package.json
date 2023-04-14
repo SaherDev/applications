@@ -6,9 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:all": "yarn workspace @monorepo/utilities run build && yarn workspace @monorepo/common run build && yarn workspace @monorepo/my-app run build",
-    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "eslint:fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
+    "build": "yarn workspaces foreach run build"
   },
   "devDependencies": {
     "@yarnpkg/pnpify": "^4.0.0-rc.42",
