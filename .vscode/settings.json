@@ -11,6 +11,10 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "prettier.useEditorConfig": false,
+  "prettier.configPath": ".prettierrc",
+  "prettier.ignorePath": ".prettierignore"
 }
