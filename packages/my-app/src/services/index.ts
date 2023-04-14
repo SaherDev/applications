@@ -1,1 +1,1 @@
-export const serviceA ="d";
+export const serviceA = 'd';

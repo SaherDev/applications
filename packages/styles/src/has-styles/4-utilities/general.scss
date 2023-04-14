@@ -23,20 +23,20 @@
 .utility-rotate {
   transform: rotate(180deg);
 
-  html[dir="rtl"] & {
+  html[dir='rtl'] & {
     transform: rotate(360deg);
   }
 }
 
 .utility-rotate-90 {
   transform: rotate(90deg);
-  html[dir="rtl"] & {
+  html[dir='rtl'] & {
     transform: rotate(90deg);
   }
 }
 
 .utility-rotate-right-rtl {
-  html[dir="rtl"] & {
+  html[dir='rtl'] & {
     transform: rotateY(3.142rad);
   }
 }

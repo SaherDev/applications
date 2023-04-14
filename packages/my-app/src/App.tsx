@@ -1,29 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.scss'
-import { Button } from '@monorepo/common/dist'
-import { formatDate } from '@monorepo/utilities/dist'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '../../../../../../../../vite.svg';
+import './App.scss';
+import { Button } from '@monorepo/common/dist';
+import { formatDate } from '@monorepo/utilities/dist';
 import '@monorepo/styles/dist';
-import {serviceA} from  "@/services"
+import { serviceA } from '@/services';
 
 function App() {
-  const [count, setCount] = useState(0)
-  
- console.log( formatDate(new Date))
+  const [count, setCount] = useState(0);
+
+  console.log(formatDate(new Date()));
 
   return (
-    <div className={''}>
-      <Button onClick={()=>{}} disabled={true} >
-
-      <h1>Vite + React</h1>
-
+    <div className="">
+      <Button onClick={() => {}} disabled>
+        <h1>Vite + React</h1>
       </Button>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://reactjs.org" target="_blank">
+        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -40,7 +38,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

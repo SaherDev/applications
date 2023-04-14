@@ -1,14 +1,14 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-      "outDir": "dist",
-      "module": "esnext",
-      "target": "esnext",
-      "moduleResolution": "node",
-      "declaration": true,
-      "jsx": "react",
-      "esModuleInterop": true,
-      "sourceMap": true
-    },
-    "include": ["src"]
-  }
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "sourceMap": true
+  },
+  "include": ["src"]
+}
