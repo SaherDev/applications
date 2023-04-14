@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/my-app",
+  "name": "@application/my-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@monorepo/common": "*",
-    "@monorepo/styles": "*",
-    "@monorepo/utilities": "*",
+    "@application/common": "*",
+    "@application/styles": "*",
+    "@application/utilities": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.62.0"

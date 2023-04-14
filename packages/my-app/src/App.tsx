@@ -2,9 +2,9 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.scss';
-import { Button } from '@monorepo/common/dist';
-import { formatDate } from '@monorepo/utilities/dist';
-// import '@monorepo/styles/dist';
+import { Button } from '@application/common/dist';
+import { formatDate } from '@application/utilities/dist';
+// import '@application/styles/dist';
 import { serviceA } from '@/services';
 
 function App() {
