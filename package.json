@@ -1,0 +1,18 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:all": "yarn workspace @monorepo/utilities run build && yarn workspace @monorepo/common run build && yarn workspace @monorepo/my-app run build"
+  },
+  "devDependencies": {
+    "@yarnpkg/pnpify": "^4.0.0-rc.42",
+    "prettier": "^2.8.7",
+    "typescript": "4.9.3"
+  },
+  "packageManager": "yarn@3.5.0"
+
+}
