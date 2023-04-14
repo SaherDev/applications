@@ -15,7 +15,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@application/common@^1.0.1, @application/common@workspace:packages/common":
+"@application/common@^1.0.2, @application/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@application/common@workspace:packages/common"
   dependencies:
@@ -32,9 +32,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@application/my-app@workspace:packages/my-app"
   dependencies:
-    "@application/common": ^1.0.1
-    "@application/styles": ^1.0.1
-    "@application/utilities": ^1.0.1
+    "@application/common": ^1.0.2
+    "@application/styles": ^1.0.2
+    "@application/utilities": ^1.0.2
     "@types/react": ^18.0.28
     "@types/react-dom": ^18.0.11
     "@vitejs/plugin-react": ^3.1.0
@@ -46,7 +46,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@application/styles@^1.0.1, @application/styles@workspace:packages/styles":
+"@application/styles@^1.0.2, @application/styles@workspace:packages/styles":
   version: 0.0.0-use.local
   resolution: "@application/styles@workspace:packages/styles"
   dependencies:
@@ -59,7 +59,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@application/utilities@^1.0.1, @application/utilities@workspace:packages/utilities":
+"@application/utilities@^1.0.2, @application/utilities@workspace:packages/utilities":
   version: 0.0.0-use.local
   resolution: "@application/utilities@workspace:packages/utilities"
   dependencies:
