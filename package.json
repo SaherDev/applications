@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach run build"
+    "build": "yarn workspaces foreach -pt run build"
   },
   "devDependencies": {
     "@yarnpkg/pnpify": "^4.0.0-rc.42",
