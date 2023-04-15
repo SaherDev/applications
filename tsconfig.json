@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
-    "removeComments": true
-  }
+    "removeComments": true,
+    "experimentalDecorators": true
+  },
+  "exclude": ["packages/**/tests/**", "packages/**/dist/**"]
 }
