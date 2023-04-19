@@ -1,3 +1,7 @@
-// .icon-search {
-//   @include create-icon("/small/search.svg", white);
-// }
+.icon-test-16 {
+  @include create-icon-image('icons-16/test.svg');
+}
+
+.icon-test2-16 {
+  @include create-icon('icons-16/test.svg', red);
+}
