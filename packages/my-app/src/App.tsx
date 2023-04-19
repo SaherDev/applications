@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.scss';
-import { Button } from '@application/common/dist';
-import { formatDate } from '@application/utilities/dist';
-// import '@application/styles/dist';
+import '@application/styles';
+
+import { Button } from '@application/common';
+import { formatDate } from '@application/utilities';
+import reactLogo from './assets/react.svg';
 import { serviceA } from '@/services';
+import { useState } from 'react';
+import viteLogo from '/vite.svg';
 
 function App() {
   const [count, setCount] = useState(0);

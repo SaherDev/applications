@@ -3,8 +3,9 @@
   "version": "1.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "module": "dist/index.css",
   "scripts": {
-    "build:styles": "sass src/index.scss dist/index.scss ",
+    "build:styles": "sass src/index.scss dist/index.css ",
     "build:ts": "tsc",
     "build": "yarn build:styles && yarn build:ts"
   },
