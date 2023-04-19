@@ -15,6 +15,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@application/assets@workspace:^, @application/assets@workspace:packages/assets":
+  version: 0.0.0-use.local
+  resolution: "@application/assets@workspace:packages/assets"
+  languageName: unknown
+  linkType: soft
+
 "@application/common@^1.0.2, @application/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@application/common@workspace:packages/common"
@@ -50,6 +56,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@application/styles@workspace:packages/styles"
   dependencies:
+    "@application/assets": "workspace:^"
     css-loader: ^6.6.0
     node-sass: ^7.0.1
     sass: ^1.49.8
