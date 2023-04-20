@@ -1,7 +1,7 @@
 {
   "name": "@application/my-app",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@application/common": "^1.0.2",
-    "@application/styles": "^1.0.2",
-    "@application/utilities": "^1.0.2",
+    "@application/common": "^1.0.3",
+    "@application/styles": "^1.0.3",
+    "@application/utilities": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.62.0"
