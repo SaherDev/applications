@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build --parallel",
+    "build": "yarn workspaces foreach -pt run build",
+    "build:lerna": "lerna run build --parallel",
     "version": "lerna version"
   },
   "devDependencies": {
