@@ -1,0 +1,18 @@
+{
+  "keepExistingTerminalsOpen": false,
+  "runOnStartup": true,
+  "terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "@application/my-app",
+          "commands": [
+            "source ~/.bash_profile",
+            "cd packages/my-app",
+            "yarn dev"
+          ]
+        }
+      ]
+    }
+  ]
+}
