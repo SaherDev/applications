@@ -18,7 +18,7 @@ function App() {
       <Button onClick={() => {}} disabled>
         <h1>Vite + React</h1>
       </Button>
-      <span className="icon-test2-16 icon-size-60-60 "></span>
+      <span className="icon-test2-16 icon-size-16-16 "></span>
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
