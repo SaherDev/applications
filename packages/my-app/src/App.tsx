@@ -1,42 +1,38 @@
 import './App.scss';
 import '@application/styles';
 
-import { AUTH_SERVICE_BASE_URL, MAIN_PAGE_MESSAGE } from '@/config';
+import { AUTH_SIGN_IN_URL, MAIN_PAGE_MESSAGE } from '@/config';
 import { useCallback, useState } from 'react';
 
 import { Button } from '@application/common';
+import { IUser } from '@/models';
 import { formatDate } from '@application/utilities';
+import { httpService } from '@/services';
 import reactLogo from './assets/react.svg';
-import { serviceA } from '@/services';
 import viteLogo from '/vite.svg';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [user, setUser] = useState<any>({
-    name: '',
+  const [user, setUser] = useState<IUser>({
+    userName: '',
   });
   // console.log(formatDate(new Date()));
 
   const loginHandler = useCallback(async () => {
-    const response = await fetch(`${AUTH_SERVICE_BASE_URL}/signin`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userName: 'string',
-        password: 'string',
-      }),
-    });
+    let response: IUser | null = null;
+    try {
+      response = await httpService.fetch<IUser>(AUTH_SIGN_IN_URL, 'POST', {
+        data: {
+          userName: 'string',
+          password: 'string',
+        },
+      });
+    } catch (error) {}
 
-    const data = await response.json();
+    if (!response) return;
 
-    if (!response.ok || response.status === 403) {
-      throw new Error(data.message || 'Forbidden');
-    }
     setUser({
-      name: data.userName,
+      userName: response.userName,
     });
   }, [user]);
 
@@ -55,7 +51,7 @@ function App() {
         </a>
       </div>
       <h1>{MAIN_PAGE_MESSAGE}</h1>
-      <h3>{`hello : ${user.name}`}</h3>
+      <h3>{`hello : ${user.userName}`}</h3>
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
