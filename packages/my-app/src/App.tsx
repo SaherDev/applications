@@ -1,23 +1,48 @@
 import './App.scss';
 import '@application/styles';
 
+import { AUTH_SERVICE_BASE_URL, MAIN_PAGE_MESSAGE } from '@/config';
+import { useCallback, useState } from 'react';
+
 import { Button } from '@application/common';
-import { MAIN_PAGE_MESSAGE } from '@/config';
 import { formatDate } from '@application/utilities';
 import reactLogo from './assets/react.svg';
 import { serviceA } from '@/services';
-import { useState } from 'react';
 import viteLogo from '/vite.svg';
 
 function App() {
   const [count, setCount] = useState(0);
-
+  const [user, setUser] = useState<any>({
+    name: '',
+  });
   // console.log(formatDate(new Date()));
 
+  const loginHandler = useCallback(async () => {
+    const response = await fetch(`${AUTH_SERVICE_BASE_URL}/signin`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userName: 'string',
+        password: 'string',
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || response.status === 403) {
+      throw new Error(data.message || 'Forbidden');
+    }
+    setUser({
+      name: data.userName,
+    });
+  }, [user]);
   return (
     <div className="">
-      <Button onClick={() => {}} disabled>
-        <h1>Vite + React</h1>
+      <Button onClick={loginHandler}>
+        <h1>login</h1>
       </Button>
       <span className="icon-test2-16 icon-size-16-16 "></span>
       <div>
@@ -29,6 +54,8 @@ function App() {
         </a>
       </div>
       <h1>{MAIN_PAGE_MESSAGE}</h1>
+      <h3>{`hello : ${user.name}`}</h3>
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
