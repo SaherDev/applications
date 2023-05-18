@@ -14,6 +14,9 @@ if (process.env.VITE_ENVIRONMENT_TYPE === 'dev') {
       '/auth': {
         target: 'http://localhost:4001',
       },
+      '/role': {
+        target: 'http://localhost:4001',
+      },
     },
   };
 }

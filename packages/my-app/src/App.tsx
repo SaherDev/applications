@@ -1,14 +1,14 @@
 import './App.scss';
 import '@application/styles';
 
-import { AUTH_SIGN_IN_URL, MAIN_PAGE_MESSAGE } from '@/config';
 import { useCallback, useState } from 'react';
 
 import { Button } from '@application/common';
 import { IUser } from '@/models';
-import { formatDate } from '@application/utilities';
-import { httpService } from '@/services';
+import { MAIN_PAGE_MESSAGE } from '@/config';
 import reactLogo from './assets/react.svg';
+import { roleService } from './providers/role.service';
+import { userService } from '@/providers';
 import viteLogo from '/vite.svg';
 
 function App() {
@@ -16,31 +16,42 @@ function App() {
   const [user, setUser] = useState<IUser>({
     userName: '',
   });
-  // console.log(formatDate(new Date()));
-
+  const [permissions, setPermissions] = useState<string[]>([]);
   const loginHandler = useCallback(async () => {
-    let response: IUser | null = null;
-    try {
-      response = await httpService.fetch<IUser>(AUTH_SIGN_IN_URL, 'POST', {
-        data: {
-          userName: 'string',
-          password: 'string',
-        },
-      });
-    } catch (error) {}
+    const response = await userService.login('string', 'string');
 
-    if (!response) return;
+    if (!response) {
+      alert('login failed');
+      return;
+    }
 
     setUser({
       userName: response.userName,
     });
   }, [user]);
 
+  const createRoleHandler = useCallback(async () => {
+    const response = await roleService.createRole(new Date().toISOString(), [
+      'permission-1',
+      'permission-2',
+    ]);
+
+    if (!response) {
+      alert('creation failed');
+      return;
+    }
+    setPermissions(response.permissions);
+  }, []);
+
   return (
     <div className="">
       <Button onClick={loginHandler}>
         <h3>login</h3>
       </Button>
+      <Button onClick={createRoleHandler}>
+        <h3>create Role </h3>
+      </Button>
+
       <span className="icon-test2-16 icon-size-16-16 "></span>
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
@@ -52,7 +63,7 @@ function App() {
       </div>
       <h1>{MAIN_PAGE_MESSAGE}</h1>
       <h3>{`hello : ${user.userName}`}</h3>
-
+      <h3> {permissions.concat('_')}</h3>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
