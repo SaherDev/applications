@@ -33,7 +33,7 @@ This project is an example of a well-structured mono-repo using Yarn Workspaces 
 5. Start 'my-app' application:
    ```shell
    cd packages/my-app
-   yarn start
+   yarn dev
    
  
 ## Development Workflow
