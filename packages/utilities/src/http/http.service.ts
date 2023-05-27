@@ -42,7 +42,7 @@ export class HTTPService {
       if (isPrivateRequest && error.response && error.response.status === 401) {
         this.refreshTokenFailedHandler();
       } else {
-        throw new Error(error);
+        throw error;
       }
     }
   }
@@ -81,7 +81,7 @@ export class HTTPService {
       if (isPrivateRequest && error.response && error.response.status === 401) {
         await this.refreshToken(url, method, config, isPrivateRequest);
       } else {
-        throw new Error(error);
+        throw error;
       }
     }
   }
