@@ -23,7 +23,7 @@ export class HTTPService {
     this.isReady = true;
   }
 
-  private async refreshToken<T>(
+  private async refreshTokenAndFetch<T>(
     url: string,
     method: Method,
     config?: AxiosRequestConfig,
@@ -79,7 +79,7 @@ export class HTTPService {
       return response.data;
     } catch (error) {
       if (isPrivateRequest && error.response && error.response.status === 401) {
-        await this.refreshToken(url, method, config, isPrivateRequest);
+        await this.refreshTokenAndFetch(url, method, config, isPrivateRequest);
       } else {
         throw error;
       }
