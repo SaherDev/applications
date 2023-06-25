@@ -48,6 +48,7 @@ Each package can be developed independently and has its own package-specific com
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/) - Official documentation for TypeScript.
 - [Yarn Workspaces Documentation](https://yarnpkg.com/features/workspaces) - Official documentation for Yarn Workspaces.
 - [Lerna Documentation](https://github.com/lerna/lerna) - Official documentation for Lerna.
+- [Nx Documentation](https://nx.dev/getting-started/intro) - Official documentation for Nx.
 - [Sass Documentation](https://sass-lang.com/documentation) - Official documentation for Sass.
 
 
