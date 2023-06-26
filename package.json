@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "build": "npx nx run-many -t build",
-    "version": "lerna version"
+    "version": "lerna version",
+    "publish":"yarn lerna publish"
   },
   "devDependencies": {
     "@yarnpkg/pnpify": "^4.0.0-rc.42",
