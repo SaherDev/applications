@@ -16,7 +16,7 @@ function App() {
   const [user, setUser] = useState<IUser>({
     userName: '',
   });
-  const [state, setState] = useState();
+
   const [permissions, setPermissions] = useState<string[]>([]);
   const loginHandler = useCallback(async () => {
     const response = await userService.login('string', 'string');
