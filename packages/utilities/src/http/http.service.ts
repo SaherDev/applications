@@ -6,7 +6,7 @@ import axios, {
 } from 'axios';
 
 export class HTTPService {
-  private refreshURL: string = 'dd';
+  private refreshURL: string = '';
   private refreshTokenFailedHandler: Function;
   private isReady: boolean;
   private httpClient: AxiosInstance;
