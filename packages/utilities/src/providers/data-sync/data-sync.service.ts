@@ -21,7 +21,7 @@ export class DataSyncService<T> {
     }
   }
 
-  private sync() {
+  sync() {
     if (this.syncInProgress) return;
 
     this.syncInProgress = true;
