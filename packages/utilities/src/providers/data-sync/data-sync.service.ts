@@ -12,11 +12,11 @@ export class DataSyncService<T> {
     private readonly httpFetch: HttpFetchFunction<T>,
     private readonly pullingRefreshRate: number,
     private readonly maxPullingRetries: number,
-    private readonly pullOnsTART: boolean,
+    private readonly pullOnsStart: boolean,
     private readonly onPullingHandler: (data: T) => void,
     private readonly onPullingFailed: (error: any) => void
   ) {
-    if (this.pullOnsTART) {
+    if (this.pullOnsStart) {
       this.sync();
     }
   }
