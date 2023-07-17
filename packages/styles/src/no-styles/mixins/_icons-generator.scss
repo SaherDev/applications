@@ -1,4 +1,4 @@
-$dir: '../../assets/src/icons/';
+$dir: '@application/assets/src/icons/';
 
 @mixin create-icon($url, $color) {
   -webkit-mask: url($dir + $url) no-repeat 50% 50%;
