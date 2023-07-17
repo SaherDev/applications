@@ -5,16 +5,16 @@ import { AsyncUtilService } from '../async';
 export class DataSyncService<T> {
   private syncInterval: NodeJS.Timer | null = null;
   private syncInProgress: boolean;
-  private pullingRetries: number;
+  private syncRetries: number;
 
   constructor(
     private readonly httpArgs: HttpFetchFunctionArgs,
     private readonly httpFetch: HttpFetchFunction<T>,
-    private readonly pullingRefreshRate: number,
-    private readonly maxPullingRetries: number,
+    private readonly syncRefreshRate: number,
+    private readonly maxSyncRetries: number,
     private readonly pullOnsStart: boolean,
-    private readonly onPullingHandler: (data: T) => void,
-    private readonly onPullingFailed: (error: any) => void
+    private readonly onSyncHandler: (data: T) => void,
+    private readonly onSyncFailed: (error: any) => void
   ) {
     if (this.pullOnsStart) {
       this.sync();
@@ -25,26 +25,23 @@ export class DataSyncService<T> {
     if (this.syncInProgress) return;
 
     this.syncInProgress = true;
-    this.pullingRetries = 0;
+    this.syncRetries = 0;
 
     this.syncInterval = AsyncUtilService.setIntervalImmediate(async () => {
       try {
-        await this.pullData();
+        await this.syncData();
       } catch (e) {
-        this.pullingRetries++;
-        if (
-          this.maxPullingRetries <= this.pullingRetries &&
-          this.syncInterval
-        ) {
+        this.syncRetries++;
+        if (this.maxSyncRetries <= this.syncRetries && this.syncInterval) {
           clearInterval(this.syncInterval);
           this.syncInProgress = false;
-          this.onPullingFailed(e);
+          this.onSyncFailed(e);
         }
       }
-    }, this.pullingRefreshRate);
+    }, this.syncRefreshRate);
   }
 
-  private async pullData() {
-    this.onPullingHandler(await this.httpFetch(...this.httpArgs));
+  private async syncData() {
+    this.onSyncHandler(await this.httpFetch(...this.httpArgs));
   }
 }
