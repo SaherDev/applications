@@ -36,7 +36,7 @@ export class DataSyncService<T> {
     }
   }
 
-  sync() {
+  async sync() {
     if (this.syncInProgress) return;
 
     this.syncInProgress = true;

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@application/common": "^1.0.4",
+    "@application/models": "1.0.0",
     "@application/styles": "^1.0.4",
     "@application/utilities": "^1.0.4",
     "class-transformer": "^0.5.1",

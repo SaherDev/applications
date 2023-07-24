@@ -34,11 +34,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@application/models@1.0.0, @application/models@workspace:packages/models":
+  version: 0.0.0-use.local
+  resolution: "@application/models@workspace:packages/models"
+  dependencies:
+    "@types/node": ^16.0.0
+    axios: ^1.4.0
+    typescript: ^4.9.3
+  languageName: unknown
+  linkType: soft
+
 "@application/my-app@workspace:packages/my-app":
   version: 0.0.0-use.local
   resolution: "@application/my-app@workspace:packages/my-app"
   dependencies:
     "@application/common": ^1.0.4
+    "@application/models": 1.0.0
     "@application/styles": ^1.0.4
     "@application/utilities": ^1.0.4
     "@types/node": ^20.1.7
@@ -74,6 +85,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@application/utilities@workspace:packages/utilities"
   dependencies:
+    "@application/models": 1.0.0
     "@types/node": ^16.0.0
     axios: ^1.4.0
     class-transformer: ^0.5.1

@@ -1,10 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { configService } from '@/providers/app-config.service';
+
+const bootstrap = async () => {
+  try {
+    await configService.waitTillConfigIsSynced();
+  } catch (error) {
+    console.log(error);
+  }
+
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+};
+
+bootstrap();
