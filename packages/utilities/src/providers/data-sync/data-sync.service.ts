@@ -1,4 +1,4 @@
-import { HttpFetchFunction, HttpFetchFunctionArgs } from '../../models';
+import { HttpFetchFunction, HttpFetchFunctionArgs } from '@application/models';
 
 import { AsyncUtilService } from '../async';
 
@@ -10,14 +10,29 @@ export class DataSyncService<T> {
   constructor(
     private readonly httpArgs: HttpFetchFunctionArgs,
     private readonly httpFetch: HttpFetchFunction<T>,
+    private readonly onSyncHandler: (data: T) => void,
     private readonly syncRefreshRate: number,
     private readonly maxSyncRetries: number,
-    private readonly pullOnsStart: boolean,
-    private readonly onSyncHandler: (data: T) => void,
-    private readonly onSyncFailed: (error: any) => void
+    private readonly pullOnsStart: boolean = false
   ) {
+    this.validateArgsOrThrowError();
     if (this.pullOnsStart) {
       this.sync();
+    }
+  }
+
+  private validateArgsOrThrowError() {
+    if (
+      this.httpArgs.length < 2 ||
+      typeof this.httpFetch !== 'function' ||
+      typeof this.onSyncHandler !== 'function' ||
+      typeof this.syncRefreshRate !== 'number' ||
+      this.syncRefreshRate <= 0 ||
+      typeof this.maxSyncRetries !== 'number' ||
+      this.maxSyncRetries <= 0 ||
+      typeof this.pullOnsStart !== 'boolean'
+    ) {
+      throw new Error('Invalid arguments');
     }
   }
 
@@ -35,7 +50,7 @@ export class DataSyncService<T> {
         if (this.maxSyncRetries <= this.syncRetries && this.syncInterval) {
           clearInterval(this.syncInterval);
           this.syncInProgress = false;
-          this.onSyncFailed(e);
+          throw e;
         }
       }
     }, this.syncRefreshRate);
