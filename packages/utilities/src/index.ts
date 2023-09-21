@@ -5,3 +5,6 @@ export * from './transform';
 export * from './async';
 export * from './data-sync';
 export * from './config-sync';
+export * from './observer';
+export * from './randoms';
+export * from './storage';

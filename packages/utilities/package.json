@@ -16,6 +16,7 @@
     "@application/models": "1.0.0",
     "axios": "^1.4.0",
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.0"
+    "class-validator": "^0.14.0",
+    "localforage": "^1.10.0"
   }
 }
