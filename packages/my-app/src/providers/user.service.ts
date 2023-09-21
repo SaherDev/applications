@@ -1,17 +1,23 @@
-import { IUser, User, UserResponseDto } from '@/models';
+import { ClassService, HTTPService } from '@application/utilities';
+import { IUser, IUserService, User, UserResponseDto } from '@/models';
 
 import { AUTH_SIGN_IN_URL } from '@/config';
-import { ClassService } from '@application/utilities';
-import { httpService } from './http.service';
+import { inject, injectable } from 'inversify';
+import { HTTP_SERVICE } from './dependencies';
 
-export class UserService {
+@injectable()
+export class UserService implements IUserService {
+  constructor(
+    @inject(HTTP_SERVICE) private readonly httpService: HTTPService
+  ) {}
+
   async login(
     userName: Readonly<string>,
     password: Readonly<string>
   ): Promise<IUser | null> {
     let response: UserResponseDto;
     try {
-      response = await httpService.fetch<UserResponseDto>(
+      response = await this.httpService.fetch<UserResponseDto>(
         AUTH_SIGN_IN_URL,
         'POST',
         {
@@ -45,4 +51,3 @@ export class UserService {
     return new User(dto.userName);
   }
 }
-export const userService = new UserService();

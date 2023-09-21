@@ -1,0 +1,4 @@
+export const APP_CONFIG_SERVICE = 'APP_CONFIG_SERVICE';
+export const HTTP_SERVICE = 'HTTP_SERVICE';
+export const USER_SERVICE = 'USER_SERVICE';
+export const ROLE_SERVICE = 'ROLE_SERVICE';

@@ -1,13 +1,15 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "experimentalDecorators": true,
     "outDir": "dist",
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
     "declaration": true,
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": ["reflect-metadata"],
+    "emitDecoratorMetadata": true
   },
   "include": ["src"]
 }

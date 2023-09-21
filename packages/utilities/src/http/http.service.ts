@@ -5,7 +5,11 @@ import axios, {
   Method,
 } from 'axios';
 
-export class HTTPService {
+import { IHttpService } from './http-service.interface';
+import { injectable } from 'inversify';
+
+@injectable()
+export class HTTPService implements IHttpService {
   private refreshURL: string = '';
   private refreshTokenFailedHandler: Function;
   private isReady: boolean;

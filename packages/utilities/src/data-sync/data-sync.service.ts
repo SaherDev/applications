@@ -1,16 +1,17 @@
-import { HttpFetchFunction, HttpFetchFunctionArgs } from '@application/models';
+import { IHttpService, IHttpServiceArgs } from '../http';
 
 import { AsyncUtilService } from '../async';
 
 export class DataSyncService<T> {
-  private syncInterval: NodeJS.Timer | null = null;
+  private syncInterval: number | null = null;
   private syncInProgress: boolean;
   private syncRetries: number;
 
   constructor(
-    private readonly httpArgs: HttpFetchFunctionArgs,
-    private readonly httpFetch: HttpFetchFunction<T>,
+    private readonly httpArgs: IHttpServiceArgs,
+    private readonly httpFetch: IHttpService,
     private readonly onSyncHandler: (data: T) => void,
+    private readonly onFailure: (error: any) => void,
     private readonly syncRefreshRate: number,
     private readonly maxSyncRetries: number,
     private readonly pullOnsStart: boolean = false
@@ -24,7 +25,6 @@ export class DataSyncService<T> {
   private validateArgsOrThrowError() {
     if (
       this.httpArgs.length < 2 ||
-      typeof this.httpFetch !== 'function' ||
       typeof this.onSyncHandler !== 'function' ||
       typeof this.syncRefreshRate !== 'number' ||
       this.syncRefreshRate <= 0 ||
@@ -50,13 +50,13 @@ export class DataSyncService<T> {
         if (this.maxSyncRetries <= this.syncRetries && this.syncInterval) {
           clearInterval(this.syncInterval);
           this.syncInProgress = false;
-          throw e;
+          this.onFailure(e);
         }
       }
     }, this.syncRefreshRate);
   }
 
   private async syncData() {
-    this.onSyncHandler(await this.httpFetch(...this.httpArgs));
+    this.onSyncHandler(await this.httpFetch.fetch(...this.httpArgs));
   }
 }

@@ -1,10 +1,9 @@
 import {
-  HttpFetchFunction,
-  HttpFetchFunctionArgs,
   IConfigBase,
   IConfigMeta,
   ISyncConfigService,
 } from '@application/models';
+import { IHttpService, IHttpServiceArgs } from '../http';
 
 import { DataSyncService } from '../data-sync';
 import { ObjectAccessorUtilService } from '../object';
@@ -19,8 +18,8 @@ export class SyncConfigService<T extends IConfigBase>
   private _configResolve: (() => void) | null;
 
   constructor(
-    private readonly httpArgs: HttpFetchFunctionArgs,
-    private readonly httpFetch: HttpFetchFunction<T>,
+    private readonly httpArgs: IHttpServiceArgs,
+    private readonly httpFetch: IHttpService,
     private readonly syncRefreshRate: number,
     private readonly maxSyncRetries: number,
     private readonly configInstanceFactory: (config: T) => T,
@@ -49,12 +48,7 @@ export class SyncConfigService<T extends IConfigBase>
     if (!this._dataSyncService) {
       this._dataSyncService = this.createDataSyncService();
     }
-
-    try {
-      await this._dataSyncService.sync();
-    } catch (error) {
-      this.configPullingFailed(error);
-    }
+    this._dataSyncService.sync();
   }
 
   private createDataSyncService() {
@@ -62,12 +56,18 @@ export class SyncConfigService<T extends IConfigBase>
       this.httpArgs,
       this.httpFetch,
       this.configChangedHandler.bind(this),
+      this.configPullingFailed.bind(this),
       this.syncRefreshRate,
       this.maxSyncRetries
     );
   }
 
   private configPullingFailed(error: any): void {
+    console.error(
+      `SyncConfigService >> Sync Failed, error = ${JSON.stringify(
+        error?.message ?? error
+      )}`
+    );
     this.configChangedHandler(this.defaultConfig);
     this._configPullingFailed = true;
   }

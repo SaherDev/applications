@@ -1,3 +1,2 @@
-export * from './app-config.service';
-export * from './http.service';
-export * from './user.service';
+export * from './dependencies';
+export * from './container.mgr.service';

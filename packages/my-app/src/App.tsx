@@ -1,17 +1,20 @@
 import './App.scss';
 import '@application/styles';
 
+import { IRoleService, IUserService } from './models';
+import { ROLE_SERVICE, USER_SERVICE, useInject } from './providers';
 import { useCallback, useState } from 'react';
 
 import { Button } from '@application/common';
 import { IUser } from '@/models';
 import { MAIN_PAGE_MESSAGE } from '@/config';
 import reactLogo from './assets/react.svg';
-import { roleService } from './providers/role.service';
-import { userService } from '@/providers';
 import viteLogo from '/vite.svg';
 
 function App() {
+  const userService = useInject<IUserService>(USER_SERVICE);
+  const roleService = useInject<IRoleService>(ROLE_SERVICE);
+
   const [count, setCount] = useState(0);
   const [user, setUser] = useState<IUser>({
     userName: '',
