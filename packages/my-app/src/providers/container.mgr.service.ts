@@ -62,9 +62,11 @@ function initializeConTainer(): Container {
 }
 
 function useInject<T>(key: any): T {
-  return container.get<T>(key);
+  return useMemo(() => {
+    return container.get<T>(key);
+  }, [key, container]);
 }
 
-interface IApplicationConfig extends ISyncConfigService<IConfigBase> {}
+interface IApplicationConfig extends ISyncConfigService<IAppConfig> {}
 
 export { initializeConTainer, useInject, IApplicationConfig, HTTPService };

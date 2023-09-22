@@ -3,12 +3,15 @@ import { IRole, IRoleService } from '@/models';
 import { CREATE_ROLE_URL } from '@/config';
 import { HTTPService } from '@application/utilities';
 import { inject, injectable } from 'inversify';
-import { HTTP_SERVICE } from './dependencies';
+import { APP_CONFIG_SERVICE, HTTP_SERVICE } from './dependencies';
+import { IApplicationConfig } from './container.mgr.service';
 
 @injectable()
 export class RoleService implements IRoleService {
   constructor(
-    @inject(HTTP_SERVICE) private readonly httpService: HTTPService
+    @inject(HTTP_SERVICE) private readonly httpService: HTTPService,
+    @inject(APP_CONFIG_SERVICE)
+    private readonly configService: IApplicationConfig
   ) {}
 
   async createRole(
