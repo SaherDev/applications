@@ -8,3 +8,4 @@ export * from './config-sync';
 export * from './observer';
 export * from './randoms';
 export * from './storage';
+export * from './dependencies';

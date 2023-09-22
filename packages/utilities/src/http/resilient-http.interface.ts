@@ -7,10 +7,10 @@ export interface IResilientHttpService extends IObserver<boolean> {
 
   retryFailedRequests(tag?: Readonly<string>): Promise<string[]>;
   findFailedRequests(tag?: string): ICachedRequest[];
-  fetch(
+  fetch<T>(
     fetchServiceArgs: Parameters<IHttpService['fetch']>,
     id?: Readonly<string>,
     tag?: Readonly<string>,
     saveOnFail?: Readonly<boolean>
-  ): Promise<Response>;
+  ): Promise<T>;
 }

@@ -1,6 +1,8 @@
 import { IObserver } from './observer-interface';
 import { NotifyFunction } from './notify-function.type';
+import { injectable } from 'inversify';
 
+@injectable()
 export class StateObserver<T> implements IObserver<T> {
   private listeners: NotifyFunction<T>[] = [];
   private _property: T;

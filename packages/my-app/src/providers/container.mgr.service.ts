@@ -1,10 +1,19 @@
 import {
   APP_CONFIG_SERVICE,
   HTTP_SERVICE,
+  LOCAL_STORAGE,
+  RESILIENT_HTTP_SERVICE,
   ROLE_SERVICE,
   USER_SERVICE,
 } from './dependencies';
-import { HTTPService, SyncConfigService } from '@application/utilities';
+import {
+  HTTPService,
+  ILocalStorage,
+  IResilientHttpService,
+  LocalForageService,
+  ResilientHttpService,
+  SyncConfigService,
+} from '@application/utilities';
 import { IConfigBase, ISyncConfigService } from '@application/models';
 
 import { AUTH_REFRESH_URL } from '@/config';
@@ -52,6 +61,22 @@ function initializeConTainer(): Container {
       true
     );
   });
+
+  container.bind<ILocalStorage>(LOCAL_STORAGE).toDynamicValue((ctx) => {
+    return new LocalForageService('failed-requests');
+  });
+
+  container
+    .bind<IResilientHttpService>(RESILIENT_HTTP_SERVICE)
+    .toDynamicValue((ctx) => {
+      return new ResilientHttpService(
+        ctx.container.get(LOCAL_STORAGE),
+        ctx.container.get(HTTP_SERVICE),
+        [4, 100],
+        true,
+        true
+      );
+    });
 
   container.bind<IUserService>(USER_SERVICE).to(UserService);
 

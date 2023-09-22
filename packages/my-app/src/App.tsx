@@ -1,6 +1,10 @@
 import './App.scss';
 import '@application/styles';
 
+import {
+  IResilientHttpService,
+  RESILIENT_HTTP_SERVICE,
+} from '@application/utilities';
 import { IRoleService, IUserService } from './models';
 import { ROLE_SERVICE, USER_SERVICE, useInject } from './providers';
 import { useCallback, useState } from 'react';
@@ -14,7 +18,7 @@ import viteLogo from '/vite.svg';
 function App() {
   const userService = useInject<IUserService>(USER_SERVICE);
   const roleService = useInject<IRoleService>(ROLE_SERVICE);
-
+  const http = useInject<IResilientHttpService>(RESILIENT_HTTP_SERVICE);
   const [count, setCount] = useState(0);
   const [user, setUser] = useState<IUser>({
     userName: '',
@@ -55,7 +59,7 @@ function App() {
       <Button onClick={createRoleHandler}>
         <h3>create Role </h3>
       </Button>
-
+      <h3>{http.isOnline ? 'true' : 'false'}</h3>
       <span className="icon-test2-16 icon-size-16-16 "></span>
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">

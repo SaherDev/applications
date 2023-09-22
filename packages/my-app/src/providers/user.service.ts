@@ -1,14 +1,18 @@
-import { ClassService, HTTPService } from '@application/utilities';
+import {
+  ClassService,
+  IResilientHttpService,
+  RESILIENT_HTTP_SERVICE,
+} from '@application/utilities';
 import { IUser, IUserService, User, UserResponseDto } from '@/models';
 
 import { AUTH_SIGN_IN_URL } from '@/config';
 import { inject, injectable } from 'inversify';
-import { HTTP_SERVICE } from './dependencies';
 
 @injectable()
 export class UserService implements IUserService {
   constructor(
-    @inject(HTTP_SERVICE) private readonly httpService: HTTPService
+    @inject(RESILIENT_HTTP_SERVICE)
+    private readonly httpService: IResilientHttpService
   ) {}
 
   async login(
@@ -17,7 +21,7 @@ export class UserService implements IUserService {
   ): Promise<IUser | null> {
     let response: UserResponseDto;
     try {
-      response = await this.httpService.fetch<UserResponseDto>(
+      response = await this.httpService.fetch<UserResponseDto>([
         AUTH_SIGN_IN_URL,
         'POST',
         {
@@ -26,8 +30,8 @@ export class UserService implements IUserService {
             password,
           },
         },
-        false
-      );
+        false,
+      ]);
     } catch (error) {
       return null;
     }
