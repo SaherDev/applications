@@ -1,7 +1,7 @@
 # Applications 
 
 
-This project is an example of a well-structured mono-repo using Yarn Workspaces for building web applications with React, TypeScript, and other related tools.
+This project is an example of a well-structured mono-repo utilizing Nx for building web applications with React, Inversify, TypeScript, and other related tools.
 
 ## Packages
 
